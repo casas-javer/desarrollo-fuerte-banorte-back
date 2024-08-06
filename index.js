@@ -26,7 +26,7 @@ app.use(cors(corsOptions));
 
 // Ruta para manejar el envío del formulario
 app.post("/desarrollo-fuerte", (req, res) => {
-  const { nombre, telefono, email, desarrollo, mensaje } = req.body;
+  const { nombre, telefono, email, desarrollo} = req.body;
 
   // Configurar el transporte del correo electrónico usando nodemailer
   let transporter = nodemailer.createTransport({
@@ -42,7 +42,7 @@ app.post("/desarrollo-fuerte", (req, res) => {
   // Configurar los datos del correo
   let mailOptions = {
     from: "noreply@javer.com.mx", // Cambiar por tu dirección de correo
-    to: "ctrevinov@javer.com.mx", // Dirección de correo a la que se enviará el formulario
+    to: "l.gonzalez@javer.com.mx", // Dirección de correo a la que se enviará el formulario
     subject: "Nuevo mensaje Sugerencia / recomendación",
     text: `Nombre: ${nombre}\nTeléfono: ${telefono}\nEmail: ${email}\nDesarrollo: ${desarrollo}`,
     bcc: 'rceron@javer.com.mx' // Dirección de correo en copia oculta (BCC)
