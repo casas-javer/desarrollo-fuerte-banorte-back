@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configuración de CORS
-const whitelist = ['https://javer.com.mx', 'https://www.javer.com.mx', 'https://qa-cliente.javer.com.mx'];
+const whitelist = ['https://javer.com.mx', 'https://www.javer.com.mx', 'https://qa-cliente.javer.com.mx']; 
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
