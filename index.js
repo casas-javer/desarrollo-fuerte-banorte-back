@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-app.disable('x-powered-by')
+app.disable("x-powered-by");
 const PORT = process.env.PORT || 3000;
 
 // Middleware para analizar los cuerpos de las solicitudes en formato JSON
@@ -12,13 +12,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configuración de CORS
-const whitelist = ['https://javer.com.mx', 'https://www.javer.com.mx', 'https://qa-cliente.javer.com.mx']; 
+const whitelist = [
+  "https://javer.com.mx",
+  "https://www.javer.com.mx",
+  "https://qa-cliente.javer.com.mx",
+];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
-      callback(new Error('Acceso no autorizado'));
+      callback(new Error("Acceso no autorizado"));
     }
   },
 };
@@ -26,16 +30,16 @@ app.use(cors(corsOptions));
 
 // Ruta para manejar el envío del formulario
 app.post("/desarrollo-fuerte", (req, res) => {
-  const { nombre, telefono, email, desarrollo} = req.body;
+  const { nombre, telefono, email, desarrollo } = req.body;
 
   // Configurar el transporte del correo electrónico usando nodemailer
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-    user: "grupojaver@gmail.com", //  Cambiar por tu dirección de correo desde donde se enviarán los correos
-    pass: "okjy snbu tcks xavp",  // Cambiar por la contraseña de tu correo
-     // user: "noreply@javer.com.mx",  Cambiar por tu dirección de correo desde donde se enviarán los correos
-    //  pass: "N0r3ply2020M",  Cambiar por la contraseña de tu correo
+      user: "grupojaver@gmail.com", //  Cambiar por tu dirección de correo desde donde se enviarán los correos
+      pass: "okjy snbu tcks xavp", // Cambiar por la contraseña de tu correo
+      // user: "noreply@javer.com.mx",  Cambiar por tu dirección de correo desde donde se enviarán los correos
+      //  pass: "N0r3ply2020M",  Cambiar por la contraseña de tu correo
     },
   });
 
@@ -45,7 +49,7 @@ app.post("/desarrollo-fuerte", (req, res) => {
     to: "sperales@javer.com.mx", // Dirección de correo a la que se enviará el formulario
     subject: "Nuevo mensaje Desarrollo fuerte Banorte",
     text: `Mensaje desde: Dessarollos fuertes de banorte\nNombre: ${nombre}\nTeléfono: ${telefono}\nEmail: ${email}\nDesarrollo: ${desarrollo}`,
-    bcc: 'rceron@javer.com.mx' // Dirección de correo en copia oculta (BCC)
+    bcc: "rct@javer.com.mx", // Dirección de correo en copia oculta (BCC)
   };
 
   // Enviar el correo electrónico
@@ -56,8 +60,10 @@ app.post("/desarrollo-fuerte", (req, res) => {
     } else {
       console.log("Correo enviado: %s", info.response);
       // res.status(200).send("Correo enviado correctamente");
-          // Redirigir al usuario a la página de gracias
-    res.redirect('https://javer.com.mx/gracias');
+      // Redirigir al usuario a la página de gracias
+      res.redirect(
+        "https://www.javer.com.mx/landing/desarrollador-fuerte/sugerencias-gracias.html",
+      );
     }
   });
 });
