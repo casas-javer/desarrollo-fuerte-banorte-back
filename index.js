@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const whitelist = [
   "https://javer.com.mx",
   "https://www.javer.com.mx",
-  "https://qa-cliente.javer.com.mx",
+  "https://casas-javer.github.io",
 ];
 const corsOptions = {
   origin: function (origin, callback) {
