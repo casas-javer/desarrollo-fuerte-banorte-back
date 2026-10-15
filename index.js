@@ -48,7 +48,7 @@ app.post("/desarrollo-fuerte", (req, res) => {
     from: "noreply@javer.com.mx", // Cambiar por tu dirección de correo
     to: "sperales@javer.com.mx", // Dirección de correo a la que se enviará el formulario
     subject: "Nuevo mensaje Desarrollo fuerte Banorte",
-    text: `Mensaje desde: Dessarollos fuertes de banorte\nNombre: ${nombre}\nTeléfono: ${telefono}\nEmail: ${email}\nDesarrollo: ${desarrollo}`,
+    text: `Mensaje desde: Desarrollo fuertes de banorte\nNombre: ${nombre}\nTeléfono: ${telefono}\nEmail: ${email}\nDesarrollo: ${desarrollo}`,
     bcc: "mkt@javer.com.mx", // Dirección de correo en copia oculta (BCC)
   };
 
